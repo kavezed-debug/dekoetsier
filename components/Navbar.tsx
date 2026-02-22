@@ -9,24 +9,12 @@ interface NavbarProps {
   onNavigate?: (path: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, currentPath = '/', onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolledState, setScrolledState] = useState(false);
-
-  // Handle local scroll state for standalone usage if needed, 
-  // but we mostly use the prop from App.tsx
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolledState(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const isHome = currentPath === '/' || currentPath === '';
 
   // Determine navbar styling
-  const navBackground = isHome && !scrolledState && !isOpen
+  const navBackground = isHome && !scrolled && !isOpen
     ? 'bg-transparent py-6'
     : 'bg-koetsier-dark/95 backdrop-blur-sm shadow-lg py-3';
 
@@ -53,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate }) => {
           onClick={(e) => handleLinkClick(e, '/')}
           className="flex flex-col items-start group text-left"
         >
-          <span className="font-serif text-2xl md:text-3xl font-bold tracking-wider text-koetsier-cream group-hover:text-koetsier-gold transition-colors text-white">
+          <span className="font-serif text-2xl md:text-3xl font-bold tracking-wider text-koetsier-cream group-hover:text-koetsier-gold transition-colors">
             DE KOETSIER
           </span>
           <span className="text-xs uppercase tracking-[0.2em] text-koetsier-gold-light">
@@ -67,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate }) => {
             <button
               key={link.name}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-sm uppercase tracking-widest hover:text-koetsier-gold transition-colors duration-200 font-medium ${currentPath === link.href ? 'text-koetsier-gold' : 'text-white'}`}
+              className={`text-sm uppercase tracking-widest hover:text-koetsier-gold transition-colors duration-200 font-medium ${currentPath === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
             >
               {link.name}
             </button>
@@ -99,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate }) => {
             <button
               key={link.name}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-lg font-serif italic hover:text-koetsier-gold transition-colors ${currentPath === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream text-white'}`}
+              className={`text-lg font-serif italic hover:text-koetsier-gold transition-colors ${currentPath === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
             >
               {link.name}
             </button>
