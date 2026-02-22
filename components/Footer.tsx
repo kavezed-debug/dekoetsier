@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from 'lucide-react';
 import { siteContent } from '../data/siteContent';

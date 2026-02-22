@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
@@ -6,7 +8,7 @@ const MenuHighlights: React.FC = () => {
   return (
     <section className="py-24 bg-koetsier-panel text-white">
       <div className="container mx-auto px-4 sm:px-6">
-        
+
         <div className="text-center mb-16">
           <span className="text-koetsier-gold uppercase tracking-widest text-sm font-bold">De Hardlopers</span>
           <h2 className="font-serif text-4xl md:text-5xl mt-2">
@@ -18,13 +20,13 @@ const MenuHighlights: React.FC = () => {
           {siteContent.highlights.map((item, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="overflow-hidden rounded-sm mb-6 relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
+                <img
+                  src={item.image}
+                  alt={item.title}
                   className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute top-4 right-4 bg-koetsier-gold text-white font-bold px-3 py-1 rounded-sm shadow-md">
-                    {item.price}
+                  {item.price}
                 </div>
               </div>
               <h3 className="font-serif text-2xl font-bold mb-2 group-hover:text-koetsier-gold transition-colors">{item.title}</h3>

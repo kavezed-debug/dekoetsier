@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { CalendarDays, Clock, ArrowRight } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
@@ -77,8 +79,8 @@ const WeeklyAgenda: React.FC = () => {
 
                 {/* Action/Icon Column */}
                 <div className="flex-shrink-0 flex items-center justify-center md:w-32 mt-6 md:mt-0">
-                  <div className="p-7 bg-stone-900/90 rounded-sm text-koetsier-gold border border-stone-700/50 group-hover:bg-koetsier-gold group-hover:text-white group-hover:border-koetsier-gold transition-all duration-700 shadow-2xl scale-110">
-                    {React.isValidElement(item.icon) && React.cloneElement(item.icon as any, { size: 40 })}
+                  <div className="p-2 bg-koetsier-gold/10 rounded-full text-koetsier-gold group-hover:bg-koetsier-gold group-hover:text-white transition-colors duration-300">
+                    {React.cloneElement(item.icon as React.ReactElement<any>, { size: 18 })}
                   </div>
                 </div>
               </div>

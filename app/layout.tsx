@@ -28,6 +28,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingCTA />
+        <FloatingReservationBtn />
       </body>
     </html>
   );
