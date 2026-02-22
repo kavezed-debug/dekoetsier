@@ -1,7 +1,7 @@
 {
   "/_not-found/page": "/_not-found",
   "/page": "/",
-  "/agenda/page": "/agenda",
   "/over-ons/page": "/over-ons",
+  "/agenda/page": "/agenda",
   "/menu/page": "/menu"
 }
