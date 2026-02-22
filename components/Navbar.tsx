@@ -2,16 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
-interface NavbarProps {
-  scrolled: boolean;
-  currentPath?: string;
-  onNavigate?: (path: string) => void;
-}
+import { usePathname } from 'next/navigation';
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled, currentPath = '/', onNavigate }) => {
+interface NavbarProps { }
+
+const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isHome = currentPath === '/' || currentPath === '';
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isHome = pathname === '/';
 
   // Determine navbar styling
   const navBackground = isHome && !scrolled && !isOpen
@@ -20,26 +30,19 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, currentPath = '/', onNavigate
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Agenda', href: '#agenda' },
+    { name: 'Agenda', href: '/#agenda' },
     { name: 'Over Ons', href: '/over-ons' },
     { name: 'Menu', href: '/menu' },
   ];
-
-  const handleLinkClick = (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(href);
-    }
-    setIsOpen(false);
-  };
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${navBackground}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <button
-          onClick={(e) => handleLinkClick(e, '/')}
+        <Link
+          href="/"
           className="flex flex-col items-start group text-left"
+          onClick={() => setIsOpen(false)}
         >
           <span className="font-serif text-2xl md:text-3xl font-bold tracking-wider text-koetsier-cream group-hover:text-koetsier-gold transition-colors">
             DE KOETSIER
@@ -47,25 +50,25 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, currentPath = '/', onNavigate
           <span className="text-xs uppercase tracking-[0.2em] text-koetsier-gold-light">
             Loenen aan de Vecht
           </span>
-        </button>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.name}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-sm uppercase tracking-widest hover:text-koetsier-gold transition-colors duration-200 font-medium ${currentPath === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
+              href={link.href}
+              className={`text-sm uppercase tracking-widest hover:text-koetsier-gold transition-colors duration-200 font-medium ${pathname === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
             >
               {link.name}
-            </button>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/#reservations"
             className="border border-koetsier-gold text-koetsier-gold hover:bg-koetsier-gold hover:text-white px-5 py-2 rounded-sm text-sm uppercase tracking-widest transition-all duration-300"
           >
             Reserveer
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -84,25 +87,27 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled, currentPath = '/', onNavigate
       >
         <div className="flex flex-col items-center py-6 space-y-6">
           {navLinks.map((link) => (
-            <button
+            <Link
               key={link.name}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className={`text-lg font-serif italic hover:text-koetsier-gold transition-colors ${currentPath === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`text-lg font-serif italic hover:text-koetsier-gold transition-colors ${pathname === link.href ? 'text-koetsier-gold' : 'text-koetsier-cream'}`}
             >
               {link.name}
-            </button>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/#reservations"
             onClick={() => setIsOpen(false)}
             className="bg-koetsier-gold text-white px-8 py-3 rounded-sm uppercase tracking-widest font-bold"
           >
             Reserveer Nu
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
   );
 };
+
 
 export default Navbar;

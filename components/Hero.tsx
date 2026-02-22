@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Utensils, Clock, ArrowRight } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
@@ -130,22 +132,24 @@ const Hero: React.FC = () => {
                 <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
               </div>
             </div>
-            <div className="p-1.5 bg-koetsier-gold/10 rounded-full text-koetsier-gold">
-              {React.cloneElement(currentActivity.icon as React.ReactElement, { size: 14 })}
-            </div>
+            {currentActivity?.icon && (
+              <div className="p-1.5 bg-koetsier-gold/10 rounded-full text-koetsier-gold">
+                {React.isValidElement(currentActivity.icon) && React.cloneElement(currentActivity.icon as any, { size: 14 })}
+              </div>
+            )}
           </div>
 
           <h2 className="font-serif text-lg font-bold text-koetsier-cream mb-1.5 truncate">
-            {currentActivity.title}
+            {currentActivity?.title}
           </h2>
 
           <div className="flex items-center gap-2 text-stone-500 text-[10px] mb-3 border-b border-white/5 pb-3">
             <Clock size={10} className="text-koetsier-gold/50" />
-            <span>{currentActivity.time}</span>
+            <span>{currentActivity?.time}</span>
           </div>
 
           <p className="text-white/60 text-[11px] leading-relaxed mb-5 italic line-clamp-2">
-            "{currentActivity.description}"
+            "{currentActivity?.description}"
           </p>
 
           <button
