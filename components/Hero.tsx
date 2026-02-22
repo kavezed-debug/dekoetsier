@@ -89,28 +89,28 @@ const Hero: React.FC = () => {
       {/* Main Content Container - Perfectly Centered */}
       <div className="relative z-20 w-full h-full max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-center">
         {/* Main Text Content */}
-        <div className="text-center space-y-8 max-w-4xl relative z-10">
+        <div className="text-center space-y-8 max-w-4xl relative z-40">
           <div className="space-y-4">
             <span className="block text-koetsier-gold uppercase tracking-[0.5em] text-xs md:text-sm animate-fade-in-up font-bold">
               Sinds 1994
             </span>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-[0_20px_20px_rgba(0,0,0,0.8)]">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-2xl">
               Welkom in de <br />
               <span className="italic text-koetsier-gold-light text-4xl md:text-6xl lg:text-7xl">huiskamer van Loenen</span>
             </h1>
           </div>
 
-          <p className="text-lg md:text-2xl text-stone-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+          <p className="text-lg md:text-xl text-stone-200 max-w-lg mx-auto font-light leading-relaxed drop-shadow-lg">
             Gezelligheid, borrelen en heerlijk dineren bij Gijs. <br className="hidden md:block" />
             Dé plek waar Loenen thuiskomt en geniet.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <a href="#contact" className="bg-koetsier-gold hover:bg-amber-700 text-white font-bold py-5 px-14 rounded-sm uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 text-lg">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+            <a href="#contact" className="bg-koetsier-gold hover:bg-amber-700 text-white font-bold py-4 px-12 rounded-sm uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 text-base">
               Reserveer Tafel
             </a>
-            <a href="#/menu" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-bold py-5 px-12 rounded-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:border-koetsier-gold/50 text-lg">
-              <Utensils size={22} className="text-koetsier-gold" />
+            <a href="#/menu" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-bold py-4 px-10 rounded-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:border-koetsier-gold/50 text-base">
+              <Utensils size={20} className="text-koetsier-gold" />
               Menukaart
             </a>
           </div>
@@ -118,46 +118,44 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Floating Activity Card - Responsive: Centered botton on mobile, Right-floating on desktop */}
-      <div className="absolute bottom-20 left-4 right-4 xl:bottom-auto xl:left-auto xl:right-10 xl:top-1/2 xl:-translate-y-1/2 w-full max-w-[calc(100%-2rem)] md:max-w-md xl:max-w-[420px] mx-auto xl:mx-0 z-30">
-        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-5 md:p-6 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
+      {/* Floating Activity Card - Responsive: Centered bottom on mobile, Right-floating on desktop */}
+      <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 xl:left-auto xl:translate-x-0 xl:right-16 xl:top-1/2 xl:-translate-y-1/2 w-[calc(100%-2rem)] md:max-w-md xl:max-w-[420px] z-50 transition-all duration-500">
+        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-6 md:p-8 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
           {/* Very subtle glow */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-koetsier-gold/5 rounded-full blur-3xl group-hover:bg-koetsier-gold/10 transition-colors"></div>
 
-          <div className="flex justify-between items-start mb-4 md:mb-5 xl:mb-8 relative z-10">
-            <div className="space-y-1 xl:space-y-1.5">
-              <span className="text-koetsier-gold text-[10px] md:text-xs xl:text-xs font-bold uppercase tracking-[0.3em]">Binnenkort</span>
-              <div className="flex items-center gap-2 xl:gap-2.5 text-stone-300 text-xs md:text-sm xl:text-base font-semibold">
+          <div className="flex justify-between items-start mb-4 md:mb-6 xl:mb-10 relative z-10">
+            <div className="space-y-1 xl:space-y-2">
+              <span className="text-koetsier-gold text-[10px] md:text-xs xl:text-sm font-bold uppercase tracking-[0.3em]">Binnenkort</span>
+              <div className="flex items-center gap-2 xl:gap-3 text-stone-300 text-xs md:text-sm xl:text-lg font-semibold">
                 <span>{currentActivity.day}</span>
-                <span className="w-1 xl:w-1 h-1 xl:h-1 bg-koetsier-gold rounded-full"></span>
+                <span className="w-1 xl:w-1.5 h-1 xl:h-1.5 bg-koetsier-gold rounded-full"></span>
                 <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
               </div>
             </div>
-            <div className="p-2 md:p-3 xl:p-3.5 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl">
-              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 24, className: "xl:hidden" })}
-              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 28, className: "hidden xl:block" })}
+            <div className="p-3 md:p-4 xl:p-5 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl">
+              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 32 })}
             </div>
           </div>
 
-          <h2 className="font-serif text-2xl md:text-3xl xl:text-3xl font-bold text-koetsier-cream mb-2 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-koetsier-cream mb-2 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
             {currentActivity.title}
           </h2>
 
-          <div className="flex items-center gap-2 md:gap-3 text-stone-300 text-xs md:text-sm xl:text-base mb-4 md:mb-5 xl:mb-8 border-b border-white/20 pb-4 md:pb-5 xl:pb-8">
-            <Clock size={16} className="text-koetsier-gold xl:hidden" />
-            <Clock size={18} className="text-koetsier-gold hidden xl:block" />
+          <div className="flex items-center gap-2 md:gap-4 text-stone-300 text-xs md:text-sm xl:text-lg mb-4 md:mb-6 xl:mb-10 border-b border-white/20 pb-4 md:pb-6 xl:pb-10">
+            <Clock size={16} className="text-koetsier-gold" />
             <span>{currentActivity.time}</span>
           </div>
 
-          <p className="text-white/80 text-xs md:text-sm xl:text-base leading-relaxed mb-6 md:mb-7 xl:mb-10 italic line-clamp-2">
+          <p className="text-white/80 text-xs md:text-sm xl:text-base leading-relaxed mb-6 md:mb-8 xl:mb-10 italic line-clamp-2">
             "{currentActivity.description}"
           </p>
 
           <button
             onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group inline-flex items-center gap-2 md:gap-3 text-koetsier-gold font-bold uppercase tracking-widest text-[10px] md:text-xs xl:text-xs hover:text-white transition-all duration-300 transform hover:translate-x-2"
+            className="group inline-flex items-center gap-2 md:gap-4 text-koetsier-gold font-bold uppercase tracking-widest text-[10px] md:text-xs xl:text-sm hover:text-white transition-all duration-300 transform hover:translate-x-2"
           >
-            Bekijk volledige agenda <ArrowRight size={16} className="xl:hidden group-hover:translate-x-2 transition-transform" />
-            <ArrowRight size={18} className="hidden xl:block group-hover:translate-x-2 transition-transform" />
+            Bekijk volledige agenda <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
       </div>
