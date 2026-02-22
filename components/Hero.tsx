@@ -94,67 +94,70 @@ const Hero: React.FC = () => {
             <span className="block text-koetsier-gold uppercase tracking-[0.5em] text-xs md:text-sm animate-fade-in-up font-bold">
               Sinds 1994
             </span>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-2xl">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-[0_20px_20px_rgba(0,0,0,0.8)]">
               Welkom in de <br />
               <span className="italic text-koetsier-gold-light text-4xl md:text-6xl lg:text-7xl">huiskamer van Loenen</span>
             </h1>
           </div>
 
-          <p className="text-lg md:text-xl text-stone-200 max-w-lg mx-auto font-light leading-relaxed drop-shadow-md">
+          <p className="text-lg md:text-2xl text-stone-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             Gezelligheid, borrelen en heerlijk dineren bij Gijs. <br className="hidden md:block" />
             Dé plek waar Loenen thuiskomt en geniet.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-            <a href="#contact" className="bg-koetsier-gold hover:bg-amber-700 text-white font-bold py-4 px-12 rounded-sm uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+            <a href="#contact" className="bg-koetsier-gold hover:bg-amber-700 text-white font-bold py-5 px-14 rounded-sm uppercase tracking-widest transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 text-lg">
               Reserveer Tafel
             </a>
-            <a href="#/menu" className="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold py-4 px-10 rounded-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:border-koetsier-gold/50">
-              <Utensils size={18} className="text-koetsier-gold" />
+            <a href="#/menu" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-bold py-5 px-12 rounded-sm uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:border-koetsier-gold/50 text-lg">
+              <Utensils size={22} className="text-koetsier-gold" />
               Menukaart
             </a>
           </div>
         </div>
       </div>
 
-      {/* Floating Activity Card - Anchored to Viewport Edge (Desktop Only) */}
-      <div className="absolute right-4 lg:right-16 top-1/2 -translate-y-1/2 hidden xl:block w-full max-w-[550px] z-30">
-        <div key={currentActivityIndex} className="animate-card bg-black/60 backdrop-blur-2xl border border-white/10 p-16 rounded-sm shadow-[0_80px_150px_rgba(0,0,0,0.9)] relative overflow-hidden group">
+      {/* Floating Activity Card - Responsive: Centered botton on mobile, Right-floating on desktop */}
+      <div className="absolute bottom-24 left-4 right-4 xl:bottom-auto xl:left-auto xl:right-16 xl:top-1/2 xl:-translate-y-1/2 w-full max-w-[calc(100%-2rem)] md:max-w-md xl:max-w-[550px] mx-auto xl:mx-0 z-30">
+        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-6 md:p-8 xl:p-16 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
           {/* Very subtle glow */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-koetsier-gold/5 rounded-full blur-3xl group-hover:bg-koetsier-gold/10 transition-colors"></div>
 
-          <div className="flex justify-between items-start mb-10 relative z-10">
-            <div className="space-y-2">
-              <span className="text-koetsier-gold text-sm font-bold uppercase tracking-[0.3em]">Binnenkort bij de koetsier</span>
-              <div className="flex items-center gap-3 text-stone-300 text-lg font-semibold">
+          <div className="flex justify-between items-start mb-4 md:mb-6 xl:mb-10 relative z-10">
+            <div className="space-y-1 xl:space-y-2">
+              <span className="text-koetsier-gold text-[10px] md:text-xs xl:text-sm font-bold uppercase tracking-[0.3em]">Binnenkort</span>
+              <div className="flex items-center gap-2 xl:gap-3 text-stone-300 text-xs md:text-sm xl:text-lg font-semibold">
                 <span>{currentActivity.day}</span>
-                <span className="w-1.5 h-1.5 bg-koetsier-gold rounded-full"></span>
+                <span className="w-1 xl:w-1.5 h-1 xl:h-1.5 bg-koetsier-gold rounded-full"></span>
                 <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
               </div>
             </div>
-            <div className="p-4 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl shadow-amber-900/40">
-              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 32 })}
+            <div className="p-2 md:p-3 xl:p-4 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl">
+              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 24, className: "xl:hidden" })}
+              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 32, className: "hidden xl:block" })}
             </div>
           </div>
 
-          <h2 className="font-serif text-5xl font-bold text-koetsier-cream mb-4 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
+          <h2 className="font-serif text-2xl md:text-3xl xl:text-5xl font-bold text-koetsier-cream mb-2 xl:mb-4 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
             {currentActivity.title}
           </h2>
 
-          <div className="flex items-center gap-4 text-stone-300 text-lg mb-10 border-b border-white/20 pb-10">
-            <Clock size={20} className="text-koetsier-gold" />
+          <div className="flex items-center gap-2 md:gap-4 text-stone-300 text-xs md:text-sm xl:text-lg mb-4 md:mb-6 xl:mb-10 border-b border-white/20 pb-4 md:pb-6 xl:pb-10">
+            <Clock size={16} className="text-koetsier-gold xl:hidden" />
+            <Clock size={20} className="text-koetsier-gold hidden xl:block" />
             <span>{currentActivity.time}</span>
           </div>
 
-          <p className="text-white/80 text-xl leading-relaxed mb-12 italic">
+          <p className="text-white/80 text-xs md:text-sm xl:text-xl leading-relaxed mb-6 md:mb-8 xl:mb-12 italic line-clamp-2 xl:line-clamp-none">
             "{currentActivity.description}"
           </p>
 
           <button
             onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group inline-flex items-center gap-4 text-koetsier-gold font-bold uppercase tracking-widest text-sm hover:text-white transition-all duration-300 transform hover:translate-x-2"
+            className="group inline-flex items-center gap-2 md:gap-4 text-koetsier-gold font-bold uppercase tracking-widest text-[10px] md:text-xs xl:text-sm hover:text-white transition-all duration-300 transform hover:translate-x-2"
           >
-            Bekijk volledige agenda <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform" />
+            Bekijk volledige agenda <ArrowRight size={16} className="xl:hidden group-hover:translate-x-2 transition-transform" />
+            <ArrowRight size={20} className="hidden xl:block group-hover:translate-x-3 transition-transform" />
           </button>
         </div>
       </div>

@@ -50,7 +50,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/over-ons": {
+    "/agenda": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -63,8 +63,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/over-ons",
-      "dataRoute": "/over-ons.rsc",
+      "srcRoute": "/agenda",
+      "dataRoute": "/agenda.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -98,7 +98,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/agenda": {
+    "/over-ons": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -111,8 +111,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/agenda",
-      "dataRoute": "/agenda.rsc",
+      "srcRoute": "/over-ons",
+      "dataRoute": "/over-ons.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
