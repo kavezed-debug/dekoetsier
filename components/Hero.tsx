@@ -118,43 +118,43 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Floating Activity Card - Anchored to Viewport Edge (Desktop Only) */}
-      <div className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 hidden xl:block w-full max-w-[280px] z-30">
-        <div key={currentActivityIndex} className="animate-card bg-black/40 backdrop-blur-md border border-white/10 p-5 rounded-sm shadow-2xl relative overflow-hidden group">
+      <div className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 hidden xl:block w-full max-w-[380px] z-30">
+        <div key={currentActivityIndex} className="animate-card bg-black/45 backdrop-blur-xl border border-white/10 p-10 rounded-sm shadow-[0_50px_100px_rgba(0,0,0,0.8)] relative overflow-hidden group">
           {/* Very subtle glow */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-koetsier-gold/5 rounded-full blur-3xl group-hover:bg-koetsier-gold/10 transition-colors"></div>
 
-          <div className="flex justify-between items-start mb-3 relative z-10">
-            <div className="space-y-0.5">
-              <span className="text-koetsier-gold text-[9px] font-bold uppercase tracking-[0.2em]">Binnenkort</span>
-              <div className="flex items-center gap-1 text-stone-400 text-[10px] font-semibold">
+          <div className="flex justify-between items-start mb-6 relative z-10">
+            <div className="space-y-1">
+              <span className="text-koetsier-gold text-[11px] font-bold uppercase tracking-[0.2em]">Binnenkort</span>
+              <div className="flex items-center gap-2 text-stone-400 text-xs font-semibold">
                 <span>{currentActivity.day}</span>
-                <span className="w-0.5 h-0.5 bg-stone-600 rounded-full"></span>
+                <span className="w-1 h-1 bg-stone-600 rounded-full"></span>
                 <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
               </div>
             </div>
-            <div className="p-1.5 bg-koetsier-gold/10 rounded-full text-koetsier-gold">
-              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 14 })}
+            <div className="p-2.5 bg-koetsier-gold/15 rounded-full text-koetsier-gold shadow-lg shadow-amber-900/20">
+              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 20 })}
             </div>
           </div>
 
-          <h2 className="font-serif text-lg font-bold text-koetsier-cream mb-1.5 truncate">
+          <h2 className="font-serif text-3xl font-bold text-koetsier-cream mb-2 truncate group-hover:text-koetsier-gold transition-colors duration-500">
             {currentActivity.title}
           </h2>
 
-          <div className="flex items-center gap-2 text-stone-500 text-[10px] mb-3 border-b border-white/5 pb-3">
-            <Clock size={10} className="text-koetsier-gold/50" />
+          <div className="flex items-center gap-3 text-stone-400 text-xs mb-6 border-b border-white/10 pb-6">
+            <Clock size={14} className="text-koetsier-gold" />
             <span>{currentActivity.time}</span>
           </div>
 
-          <p className="text-white/60 text-[11px] leading-relaxed mb-5 italic line-clamp-2">
+          <p className="text-white/70 text-sm leading-relaxed mb-8 italic line-clamp-3">
             "{currentActivity.description}"
           </p>
 
           <button
             onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group inline-flex items-center gap-2 text-koetsier-gold/80 font-bold uppercase tracking-widest text-[9px] hover:text-white transition-colors"
+            className="group inline-flex items-center gap-3 text-koetsier-gold font-bold uppercase tracking-widest text-[11px] hover:text-white transition-all duration-300 transform hover:translate-x-1"
           >
-            Alle activiteiten <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            Alle activiteiten <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
       </div>
