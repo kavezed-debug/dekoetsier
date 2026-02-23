@@ -96,9 +96,9 @@ const Hero: React.FC = () => {
             <span className="block text-koetsier-gold uppercase tracking-[0.5em] text-xs md:text-sm animate-fade-in-up font-bold">
               Sinds 1994 <span className="text-[8px] opacity-20">(v1.1)</span>
             </span>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-2xl">
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-white drop-shadow-2xl">
               Welkom in de <br />
-              <span className="italic text-koetsier-gold-light text-4xl md:text-6xl lg:text-7xl">huiskamer van Loenen</span>
+              <span className="italic text-koetsier-gold-light text-3xl md:text-5xl lg:text-6xl xl:text-7xl">huiskamer van Loenen</span>
             </h1>
           </div>
 
@@ -121,8 +121,8 @@ const Hero: React.FC = () => {
 
       {/* Floating Activity Card - Responsive: Centered botton on mobile, Right-floating on desktop */}
       {/* Floating Activity Card - Responsive: Centered bottom on mobile, Right-floating on desktop */}
-      <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-10 lg:top-1/2 lg:-translate-y-1/2 w-[calc(100%-2rem)] md:max-w-sm lg:max-w-[360px] xl:max-w-[420px] z-50 transition-all duration-500">
-        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-5 md:p-6 lg:p-7 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
+      <div className="absolute bottom-6 md:bottom-10 xl:bottom-auto left-1/2 -translate-x-1/2 xl:left-auto xl:translate-x-0 xl:right-10 xl:top-1/2 xl:-translate-y-1/2 w-[calc(100%-2rem)] max-w-[280px] md:max-w-xs lg:max-w-sm xl:max-w-[420px] z-50 transition-all duration-500">
+        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-4 md:p-5 lg:p-6 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
           {/* Very subtle glow */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-koetsier-gold/5 rounded-full blur-3xl group-hover:bg-koetsier-gold/10 transition-colors"></div>
 
@@ -144,16 +144,16 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <h2 className="font-serif text-xl md:text-2xl lg:text-3xl font-bold text-koetsier-cream mb-2 lg:mb-2.5 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
+          <h2 className="font-serif text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-koetsier-cream mb-1.5 md:mb-2 lg:mb-2.5 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
             {currentActivity.title}
           </h2>
 
-          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 text-stone-300 text-[10px] md:text-xs lg:text-sm xl:text-lg mb-3 md:mb-4 lg:mb-6 xl:mb-10 border-b border-white/20 pb-3 md:pb-4 lg:pb-6 xl:pb-10">
-            <Clock size={14} className="text-koetsier-gold" />
+          <div className="flex items-center gap-2 md:gap-3 text-stone-300 text-[10px] md:text-xs xl:text-lg mb-2 md:mb-3 lg:mb-4 xl:mb-10 border-b border-white/20 pb-2 md:pb-3 lg:pb-4 xl:pb-10">
+            <Clock size={12} className="text-koetsier-gold" />
             <span>{currentActivity.time}</span>
           </div>
 
-          <p className="text-white/80 text-[10px] md:text-xs lg:text-sm xl:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 xl:mb-10 italic line-clamp-2">
+          <p className="text-white/80 text-[10px] md:text-xs xl:text-base leading-relaxed mb-3 md:mb-5 lg:mb-6 xl:mb-10 italic line-clamp-2">
             "{currentActivity.description}"
           </p>
 
