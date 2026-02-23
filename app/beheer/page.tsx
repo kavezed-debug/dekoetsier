@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -96,35 +98,35 @@ export default function App() {
       <main className="px-8 pb-8">
         {/* Stats Row - Locked except 'Gerechten Online' */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <StatCard 
-            title="Gerechten Online" 
-            value={dishes.length.toString()} 
-            change="+4" 
-            trend="up" 
+          <StatCard
+            title="Gerechten Online"
+            value={dishes.length.toString()}
+            change="+4"
+            trend="up"
             period="vs vorige maand"
             locked={false}
           />
-          <StatCard 
-            title="Omzet Vandaag" 
-            value="€ 3.552,00" 
-            change="-8%" 
-            trend="down" 
+          <StatCard
+            title="Omzet Vandaag"
+            value="€ 3.552,00"
+            change="-8%"
+            trend="down"
             period="vs gisteren"
             locked={true}
           />
-          <StatCard 
-            title="Reserveringen" 
-            value="22" 
-            change="+6" 
-            trend="up" 
+          <StatCard
+            title="Reserveringen"
+            value="22"
+            change="+6"
+            trend="up"
             period="voor vanavond"
             locked={true}
           />
-          <StatCard 
-            title="Bezoekers" 
-            value="1.240" 
-            change="+12%" 
-            trend="up" 
+          <StatCard
+            title="Bezoekers"
+            value="1.240"
+            change="+12%"
+            trend="up"
             period="deze week"
             locked={true}
           />
@@ -133,7 +135,7 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {/* Main Content Area */}
           <div className="lg:col-span-2 xl:col-span-3 space-y-8">
-            
+
             {/* Menu Table - Central Focus */}
             <DishTable
               dishes={dishes}
@@ -176,12 +178,12 @@ export default function App() {
                   <option>Laatste 30 dagen</option>
                 </select>
               </div>
-              
+
               {/* Simple CSS Bar Chart Visualization - Blurred */}
               <div className="h-64 flex items-end justify-between gap-2 opacity-30 pointer-events-none">
                 {[40, 65, 45, 80, 55, 70, 45, 60, 75, 50, 85, 65, 55, 70, 90, 60, 75, 50, 65, 80, 45, 60, 75, 55, 70, 85, 60, 75, 50, 90].map((height, i) => (
                   <div key={i} className="w-full bg-emerald-50 rounded-t-sm relative">
-                    <div 
+                    <div
                       className="absolute bottom-0 left-0 right-0 bg-emerald-200 rounded-t-sm"
                       style={{ height: `${height}%` }}
                     ></div>
