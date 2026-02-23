@@ -6,6 +6,7 @@ import { siteContent } from '../data/siteContent';
 
 const Hero: React.FC = () => {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Date calculation logic
   const getUpcomingDates = () => {
@@ -27,6 +28,7 @@ const Hero: React.FC = () => {
   const dateList = getUpcomingDates();
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setInterval(() => {
       setCurrentActivityIndex((prev) => (prev + 1) % siteContent.agenda.length);
     }, 4000);
@@ -87,12 +89,12 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main Content Container - Perfectly Centered */}
-      <div className="relative z-20 w-full h-full max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-center">
+      <div className="relative z-30 w-full h-full max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-center">
         {/* Main Text Content */}
         <div className="text-center space-y-8 max-w-4xl relative z-40">
           <div className="space-y-4">
             <span className="block text-koetsier-gold uppercase tracking-[0.5em] text-xs md:text-sm animate-fade-in-up font-bold">
-              Sinds 1994
+              Sinds 1994 <span className="text-[8px] opacity-20">(v1.1)</span>
             </span>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-white drop-shadow-2xl">
               Welkom in de <br />
@@ -119,43 +121,47 @@ const Hero: React.FC = () => {
 
       {/* Floating Activity Card - Responsive: Centered botton on mobile, Right-floating on desktop */}
       {/* Floating Activity Card - Responsive: Centered bottom on mobile, Right-floating on desktop */}
-      <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 xl:left-auto xl:translate-x-0 xl:right-16 xl:top-1/2 xl:-translate-y-1/2 w-[calc(100%-2rem)] md:max-w-md xl:max-w-[420px] z-50 transition-all duration-500">
-        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-6 md:p-8 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
+      <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-10 lg:top-1/2 lg:-translate-y-1/2 w-[calc(100%-2rem)] md:max-w-sm lg:max-w-[360px] xl:max-w-[420px] z-50 transition-all duration-500">
+        <div key={currentActivityIndex} className="animate-card bg-black/70 backdrop-blur-3xl border border-white/10 p-5 md:p-6 lg:p-7 xl:p-10 rounded-sm shadow-[0_40px_100px_rgba(0,0,0,0.9)] relative overflow-hidden group">
           {/* Very subtle glow */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-koetsier-gold/5 rounded-full blur-3xl group-hover:bg-koetsier-gold/10 transition-colors"></div>
 
-          <div className="flex justify-between items-start mb-4 md:mb-6 xl:mb-10 relative z-10">
-            <div className="space-y-1 xl:space-y-2">
-              <span className="text-koetsier-gold text-[10px] md:text-xs xl:text-sm font-bold uppercase tracking-[0.3em]">Binnenkort</span>
-              <div className="flex items-center gap-2 xl:gap-3 text-stone-300 text-xs md:text-sm xl:text-lg font-semibold">
-                <span>{currentActivity.day}</span>
-                <span className="w-1 xl:w-1.5 h-1 xl:h-1.5 bg-koetsier-gold rounded-full"></span>
-                <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
+          <div className="flex justify-between items-start mb-4 md:mb-5 lg:mb-6 xl:mb-10 relative z-10">
+            <div className="space-y-1 lg:space-y-1.5 xl:space-y-2">
+              <span className="text-koetsier-gold text-[10px] md:text-[11px] lg:text-xs xl:text-sm font-bold uppercase tracking-[0.3em]">Binnenkort</span>
+              <div className="flex items-center gap-2 lg:gap-2.5 xl:gap-3 text-stone-300 text-[10px] md:text-xs lg:text-sm xl:text-lg font-semibold h-6">
+                {isMounted && (
+                  <>
+                    <span>{currentActivity.day}</span>
+                    <span className="w-1 lg:w-1.25 xl:w-1.5 h-1 lg:h-1.25 xl:h-1.5 bg-koetsier-gold rounded-full"></span>
+                    <span className="text-koetsier-gold-light">{dateList[currentActivityIndex]}</span>
+                  </>
+                )}
               </div>
             </div>
-            <div className="p-3 md:p-4 xl:p-5 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl">
-              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 32 })}
+            <div className="p-2.5 md:p-3 lg:p-4 xl:p-5 bg-koetsier-gold/20 rounded-full text-koetsier-gold shadow-2xl">
+              {React.cloneElement(currentActivity.icon as React.ReactElement<any>, { size: 28 })}
             </div>
           </div>
 
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-koetsier-cream mb-2 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
+          <h2 className="font-serif text-xl md:text-2xl lg:text-3xl font-bold text-koetsier-cream mb-2 lg:mb-2.5 xl:mb-3 group-hover:text-koetsier-gold transition-colors duration-500 leading-tight">
             {currentActivity.title}
           </h2>
 
-          <div className="flex items-center gap-2 md:gap-4 text-stone-300 text-xs md:text-sm xl:text-lg mb-4 md:mb-6 xl:mb-10 border-b border-white/20 pb-4 md:pb-6 xl:pb-10">
-            <Clock size={16} className="text-koetsier-gold" />
+          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 text-stone-300 text-[10px] md:text-xs lg:text-sm xl:text-lg mb-3 md:mb-4 lg:mb-6 xl:mb-10 border-b border-white/20 pb-3 md:pb-4 lg:pb-6 xl:pb-10">
+            <Clock size={14} className="text-koetsier-gold" />
             <span>{currentActivity.time}</span>
           </div>
 
-          <p className="text-white/80 text-xs md:text-sm xl:text-base leading-relaxed mb-6 md:mb-8 xl:mb-10 italic line-clamp-2">
+          <p className="text-white/80 text-[10px] md:text-xs lg:text-sm xl:text-base leading-relaxed mb-4 md:mb-6 lg:mb-8 xl:mb-10 italic line-clamp-2">
             "{currentActivity.description}"
           </p>
 
           <button
             onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group inline-flex items-center gap-2 md:gap-4 text-koetsier-gold font-bold uppercase tracking-widest text-[10px] md:text-xs xl:text-sm hover:text-white transition-all duration-300 transform hover:translate-x-2"
+            className="group inline-flex items-center gap-2 md:gap-3 lg:gap-4 text-koetsier-gold font-bold uppercase tracking-widest text-[9px] md:text-[10px] lg:text-xs xl:text-sm hover:text-white transition-all duration-300 transform hover:translate-x-2"
           >
-            Bekijk volledige agenda <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+            Bekijk volledige agenda <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
       </div>
@@ -163,7 +169,7 @@ const Hero: React.FC = () => {
       {/* Scroll Indicator */}
       <a
         href="#contact"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 hover:text-koetsier-gold transition-colors animate-bounce cursor-pointer z-20"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 hover:text-koetsier-gold transition-colors animate-bounce cursor-pointer z-40"
       >
         <ChevronDown size={40} />
       </a>
